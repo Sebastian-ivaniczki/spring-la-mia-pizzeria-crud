@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+<body>
+    <h1>Pizza's</h1>
+    <ul>
+        <li th:each="pizza : ${pizzas}">
+            <a th:href="@{/pizzas/{id}(id=${pizza.id})}" th:text="${pizza.name}"></a>
+        </li>
+    </ul>
+</body>
+</html>
