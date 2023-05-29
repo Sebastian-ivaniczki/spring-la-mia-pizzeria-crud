@@ -12,7 +12,7 @@
     <input id="name" type="text" name="name" th:value="${name}">
     <input type="submit">
     </form>
-    
+    <a th:href="@{/pizzas/create}">Add pizza</a>
     <ul>
         <li th:each="pizza : ${pizzas}">
             <a th:href="@{/pizzas/{id}(id=${pizza.id})}" th:text="${pizza.name}"></a>
