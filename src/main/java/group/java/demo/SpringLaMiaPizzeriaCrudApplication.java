@@ -23,11 +23,11 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		Pizza p = new Pizza("margherita", "buona buona" ,"https://www.unmondodisapori.it/wp-content/uploads/2017/10/margherita.jpg", 5.00f);
-		Pizza p1 = new Pizza("margherita", "buona buona" ,"https://www.unmondodisapori.it/wp-content/uploads/2017/10/margherita.jpg", 5.00f);
-		Pizza p2 = new Pizza("margherita", "buona buona" ,"https://www.unmondodisapori.it/wp-content/uploads/2017/10/margherita.jpg", 5.00f);
-		Pizza p3 = new Pizza("margherita", "buona buona" ,"https://www.unmondodisapori.it/wp-content/uploads/2017/10/margherita.jpg", 5.00f);
-		Pizza p4 = new Pizza("margherita", "buona buona" ,"https://www.unmondodisapori.it/wp-content/uploads/2017/10/margherita.jpg", 5.00f);
+		Pizza p = new Pizza("margherita 1", "buona buona" ,"https://www.unmondodisapori.it/wp-content/uploads/2017/10/margherita.jpg", 5.00f);
+		Pizza p1 = new Pizza("margherita 2", "buona buona" ,"https://www.unmondodisapori.it/wp-content/uploads/2017/10/margherita.jpg", 5.00f);
+		Pizza p2 = new Pizza("margherita 3", "buona buona" ,"https://www.unmondodisapori.it/wp-content/uploads/2017/10/margherita.jpg", 5.00f);
+		Pizza p3 = new Pizza("margherita 4", "buona buona" ,"https://www.unmondodisapori.it/wp-content/uploads/2017/10/margherita.jpg", 5.00f);
+		Pizza p4 = new Pizza("margherita 5", "buona buona" ,"https://www.unmondodisapori.it/wp-content/uploads/2017/10/margherita.jpg", 5.00f);
 		pizzaService.save(p);
 		pizzaService.save(p1);
 		pizzaService.save(p2);

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 import group.java.demo.entity.Pizza;
 import group.java.demo.service.PizzaService;
@@ -29,6 +31,16 @@ public class ControllerPizza {
 		
 		return "index";
 		
+	}
+	
+	@PostMapping("/pizzas/by/name")
+	public String getBookByTitle(Model model, @RequestParam(required = false) String name) {
+		
+		List<Pizza> pizzas = pizzaService.findByName(name);
+		model.addAttribute("pizzas", pizzas);
+		model.addAttribute("name", name);
+		
+		return "index";
 	}
 	
 	@GetMapping("/pizzas/{id}")
