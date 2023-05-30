@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+
 import group.java.demo.entity.Pizza;
 import group.java.demo.service.PizzaService;
+import jakarta.validation.Valid;
 
 @Controller
 public class ControllerPizza {
@@ -61,7 +65,9 @@ public class ControllerPizza {
 	//create
 	
 	@GetMapping("pizzas/create")
-	public String createPizza() {
+	public String createPizza(Model model) {
+		
+		model.addAttribute("pizza", new Pizza());
 		
 		return "create"; 
 		
@@ -69,8 +75,21 @@ public class ControllerPizza {
 	
 	
 	@PostMapping("pizzas/create")
-	public String storePizza(@ModelAttribute Pizza pizza) {
+	public String storePizza(Model model, @Valid @ModelAttribute Pizza pizza, BindingResult bindingResult) {
 		
+		
+		if(bindingResult.hasErrors() ) {
+			for(ObjectError err :bindingResult.getAllErrors()) {
+				System.err.println("error: " + err.getDefaultMessage());
+				
+				model.addAttribute("pizza", pizza);
+				model.addAttribute("errors", bindingResult);
+				//if (bindingResult.hasFieldErrors(name))
+				
+				bindingResult.getFieldError("name").getDefaultMessage();
+				return "create";
+			}
+		}
 		pizzaService.save(pizza);
 		
 		return "redirect:/";
