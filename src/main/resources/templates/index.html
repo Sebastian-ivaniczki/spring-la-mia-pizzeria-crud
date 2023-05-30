@@ -16,6 +16,8 @@
     <ul>
         <li th:each="pizza : ${pizzas}">
             <a th:href="@{/pizzas/{id}(id=${pizza.id})}" th:text="${pizza.name}"></a>
+            <a th:href="@{/pizza/update/{id} (id=${pizza.id})}">Update</a> - 
+            <a th:href="@{/pizza/delete/{id} (id=${pizza.id})}">Delete</a>
         </li>
     </ul>
 </body>

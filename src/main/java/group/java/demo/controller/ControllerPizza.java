@@ -58,6 +58,7 @@ public class ControllerPizza {
         return "singlepizza";
     }
 	
+	//create
 	
 	@GetMapping("pizzas/create")
 	public String createPizza() {
@@ -74,6 +75,42 @@ public class ControllerPizza {
 		
 		return "redirect:/";
 		
+	}
+	
+	//delete
+	
+	@GetMapping("/pizza/delete/{id}")
+	public String delt(@PathVariable Integer id) {
+		
+		
+		Optional<Pizza>  pizzaOpt = pizzaService.findById(id);
+		Pizza pizza = pizzaOpt.get();
+		pizzaService.deltPizza(pizza);
+		
+		
+		return "redirect:/";
+	}
+	
+	//Update 
+	
+	@GetMapping("/pizza/update/{id}")
+	public String edit(Model model, @PathVariable Integer id) {
+		
+		Optional<Pizza>  pizzaOpt = pizzaService.findById(id);
+		Pizza pizza = pizzaOpt.get();
+		 model.addAttribute("pizza", pizza);
+		 
+		 return "update";
+		
+	}
+	
+	//save the updates 
+	@PostMapping("/pizza/update/{id}")
+	public String update(@PathVariable Integer id,
+						@ModelAttribute Pizza pizza) {
+		pizzaService.save(pizza);
+		
+		return "redirect:/";
 	}
 	
 

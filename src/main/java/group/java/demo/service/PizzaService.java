@@ -39,5 +39,7 @@ public class PizzaService {
 		
 	}
 	
-
+   public void deltPizza (Pizza pizza) {
+	   pizzaRepo.delete(pizza);
+   }
 }
